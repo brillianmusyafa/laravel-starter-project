@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin',function(){
+  return view('layouts.adminlte');
+});
+
+Route::group(['prefix'=>'docs'],function(){
+  Route::get('icons',function(){
+      return view('pages.icons');
+  });
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
