@@ -28,16 +28,16 @@
   <ul class="sidebar-menu">
     <li class="header">HEADER</li>
     <!-- Optionally, you can add icons to the links -->
-    <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-    <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+    <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
+    <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Setting</span></a></li> -->
     <li class="treeview">
-      <a href="#"><i class="fa fa-link"></i> <span>Docs</span>
+      <a href="#"><i class="fa fa-link"></i> <span>Setting</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
         </span>
       </a>
       <ul class="treeview-menu">
-        <li><a href="{{url('docs/icons')}}">icons</a></li>
+        <li><a href="{{url('docs/icons')}}">User</a></li>
         <li><a href="#">Link in level 2</a></li>
       </ul>
     </li>

@@ -27,3 +27,6 @@ Route::group(['prefix'=>'docs'],function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('users', 'UsersController');
+Route::resource('admin/role', 'Admin\\RoleController');
