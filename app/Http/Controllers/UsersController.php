@@ -6,6 +6,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\User;
+use App\Role;
+Use App\Bidang;
+use Hash;
 use Illuminate\Http\Request;
 use Session;
 
@@ -30,7 +33,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $list_role = Role::pluck('role_name','id');
+        $list_bidang = Bidang::pluck('nama_bidang','id');
+        return view('users.create',compact('list_role','list_bidang'));
     }
 
     /**
@@ -44,7 +49,8 @@ class UsersController extends Controller
     {
         
         $requestData = $request->all();
-        
+        $requestData['password'] = Hash::make($requestData['password']);
+        // dd($requestData);
         User::create($requestData);
 
         Session::flash('flash_message', 'User added!');
@@ -76,8 +82,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-
-        return view('users.edit', compact('user'));
+        $list_role = Role::pluck('role_name','id');
+        $list_bidang = Bidang::pluck('nama_bidang','id');
+        return view('users.edit',compact('user','list_role','list_bidang'));
     }
 
     /**
@@ -93,7 +100,13 @@ class UsersController extends Controller
         
         $requestData = $request->all();
         
+        if($requestData['password'] == ''){
+            unset($requestData['password']);    
+        }else{
+            $requestData['password'] = Hash::make($requestData['password']);
+        }
         $user = User::findOrFail($id);
+
         $user->update($requestData);
 
         Session::flash('flash_message', 'User updated!');

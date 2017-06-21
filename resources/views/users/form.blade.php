@@ -15,25 +15,25 @@
 <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
     {!! Form::label('password', 'Password', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('password', null, ['class' => 'form-control']) !!}
+        {!! Form::password('password', ['class' => 'form-control']) !!}
         {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
-    </div>
-</div>
-<div class="form-group {{ $errors->has('remember_token') ? 'has-error' : ''}}">
-    {!! Form::label('remember_token', 'Remember Token', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
-        {!! Form::text('remember_token', null, ['class' => 'form-control']) !!}
-        {!! $errors->first('remember_token', '<p class="help-block">:message</p>') !!}
+        {!! isset($submitButtonText) ? '<p class="help-block">Jika password sama, kosongkan.</p>' : ''!!}
     </div>
 </div>
 <div class="form-group {{ $errors->has('role_id') ? 'has-error' : ''}}">
-    {!! Form::label('role_id', 'Role Id', ['class' => 'col-md-4 control-label']) !!}
+    {!! Form::label('role_id', 'Role', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::number('role_id', null, ['class' => 'form-control']) !!}
+        {!! Form::select('role_id',$list_role, null, ['class' => 'form-control','placeholder'=>'-Pilih Role','id'=>'role_id']) !!}
         {!! $errors->first('role_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
-
+<div class="form-group {{ $errors->has('role_id') ? 'has-error' : ''}} hidden" id="block-bidang">
+    {!! Form::label('role_id', 'Bidang', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::select('bidang_id',$list_bidang, null, ['class' => 'form-control','placeholder'=>'-Pilih Bidang']) !!}
+        {!! $errors->first('bidang_id', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">

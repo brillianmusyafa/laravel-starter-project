@@ -12,14 +12,14 @@
             <table class="table table-borderless">
                 <thead>
                     <tr>
-                        <th>ID</th><th> Name </th><th> Email </th><th> Password </th><th>Actions</th>
+                        <th>ID</th><th> Name </th><th> Email </th><th> Role </th><th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($users as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->name }}</td><td>{{ $item->email }}</td><td>{{ $item->password }}</td>
+                        <td>{{ $item->name }}</td><td>{{ $item->email }}</td><td>{{ $item->Role->role_name }}</td>
                         <td>
                             <a href="{{ url('/users/' . $item->id) }}" class="btn btn-success btn-xs" title="View User"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                             <a href="{{ url('/users/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit User"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
